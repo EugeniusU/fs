@@ -2,8 +2,6 @@ var fs = require('fs');
 var methods = Object.create(null);
 
 methods.ReadFile = function(file, logout, statF) {
-//	if (!logout && statF) {
-//		console.log(
 	fs.readFile(file, 'utf-8', function(error, text) {
 		if (error) {
 			throw error;
@@ -83,23 +81,11 @@ methods.WriteFile = function(name, size, type) {
 
 
 methods.ChangeFile = function(file, ch, newFile) {
-/*	var pre = methods.ReadFile(file, false, false);
-	
-	pre.on(function(success, error) {
-		if (error) {
-			throw error;
-		} else {
-			console.log(pre);
-		}
-	});*/
-	
 	var pre = [];
-
 	fs.readFile(file, 'utf-8', function(error, text) {
 		if (error) {
 			throw error;
 		} 
-		
 		pre = ch2(text).join(' ');
 		
 		if (newFile) {
